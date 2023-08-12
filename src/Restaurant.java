@@ -7,7 +7,7 @@ public class Restaurant {
     private String Price;
     private String ZIPcode;
     private List<String> Categories;
- 
+  
     Restaurant(int ID,String Name,double Score,String Price, String ZIPcode ,List<String> Categories){
         this.Categories=Categories;
         this.ID=ID;

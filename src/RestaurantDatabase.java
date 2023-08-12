@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.Map;
+import java.util.HashMap;
 public class RestaurantDatabase {
 
 
@@ -149,20 +150,26 @@ public class RestaurantDatabase {
                 case 1:
                     scn.nextLine();
                     System.out.print(" Enter Food Name : ");
-                    searchFoodByName(scn.nextLine());
+                    str1=scn.nextLine();
+                    searchFoodByName(str1);
                     sub_menu_Search_Food_items();
                     break;
                 case 2:
                     scn.nextLine();
                     System.out.print(" Enter Restaurant Name : ");
-                    searchFoodByNameInARestaurant(scn.nextLine(), scn.nextLine());
+                    str1=scn.nextLine();
+                    // System.out.print(str1);
+                    System.out.print(" Enter Food Name : ");
+                    str2=scn.nextLine();
+                    searchFoodByNameInARestaurant(str2, str1);
                     sub_menu_Search_Food_items();
                     break;
 
                 case 3:
                     scn.nextLine();
                     System.out.print(" Enter Category Name : ");
-                    searchFoodByCategory(scn.nextLine());
+                    str1=scn.nextLine();
+                    searchFoodByCategory(str1);
                     sub_menu_Search_Food_items();
                     break;
                 case 4:
@@ -185,6 +192,7 @@ public class RestaurantDatabase {
                     System.out.print(" Enter lowest and highest price : ");
                     low=scn.nextInt();
                     high=scn.nextInt();
+                    scn.nextLine();
                     System.out.print(" Enter Resturant Name : ");
                     str2=scn.nextLine();
                     searchFoodwithPriceInARestaurant(low,high,str2);
@@ -192,6 +200,7 @@ public class RestaurantDatabase {
                     break;
                 case 7:
                     scn.nextLine();
+                    System.out.print(" Enter Restaurant Name : ");
                     costliestFoodItem(scn.nextLine());
                     sub_menu_Search_Food_items();
                     break;
@@ -208,7 +217,7 @@ public class RestaurantDatabase {
             }
         }
     }
-
+ 
     public boolean restaurantsearch(String Name){
         for(Restaurant restaurant: restaurantList){
             if(restaurant.getName().equals(Name)){
@@ -476,22 +485,48 @@ public class RestaurantDatabase {
         }
     }
 
-    public void totalItemsInEveryRestaurant(){
-        List<String> ResturantNameArrayUsingID=new ArrayList<>(restaurantList.size()+1);
-        List<Integer> FoodNumberUsingRestaurantID=new ArrayList<>(restaurantList.size()+1);
-        for(Restaurant restaurant:restaurantList){
-            ResturantNameArrayUsingID.set(restaurant.getID(),restaurant.getName());
-        }
+    // public void totalItemsInEveryRestaurant(){
+    //     List<String> ResturantNameArrayUsingID=new ArrayList<>(restaurantList.size()+100);
+    //     List<Integer> FoodNumberUsingRestaurantID=new ArrayList<>(restaurantList.size()+100);
+    //     for(Restaurant restaurant:restaurantList){
+    //         ResturantNameArrayUsingID.set(restaurant.getID(),restaurant.getName());
+    //         System.out.print(restaurant.getID()+" ");
+    //     }
 
-        for(Food foo: foodList){
-            int num=FoodNumberUsingRestaurantID.get(foo.getRestaurantID());
-            num++;
-            FoodNumberUsingRestaurantID.set(foo.getRestaurantID(), num);
-        }
+    //     for(Food foo: foodList){
+    //         int num=FoodNumberUsingRestaurantID.get(foo.getRestaurantID());
+    //         num++;
+    //         FoodNumberUsingRestaurantID.set(foo.getRestaurantID(), num);
+    //     }
 
-        for(int i=1;i<restaurantList.size()+1;i++){
-            System.out.println(ResturantNameArrayUsingID.get(i)+" : "+ FoodNumberUsingRestaurantID.get(i));
+    //     for(int i=1;i<restaurantList.size()+1;i++){
+    //         System.out.println(ResturantNameArrayUsingID.get(i)+" : "+ FoodNumberUsingRestaurantID.get(i));
+    //     }
+    // }
+
+    public void totalItemsInEveryRestaurant() {
+        Map<Integer, String> restaurantNameMap = new HashMap<>();
+        Map<Integer, Integer> foodCountMap = new HashMap<>();
+    
+        for (Restaurant restaurant : restaurantList) {
+            restaurantNameMap.put(restaurant.getID(), restaurant.getName());
+            foodCountMap.put(restaurant.getID(), 0);
+        }
+    
+        for (Food foo : foodList) {
+            int restaurantID = foo.getRestaurantID();
+            foodCountMap.put(restaurantID, foodCountMap.getOrDefault(restaurantID, 0) + 1);
+        }
+    
+        for (Map.Entry<Integer, String> entry : restaurantNameMap.entrySet()) {
+            int restaurantID = entry.getKey();
+            String restaurantName = entry.getValue();
+            int foodCount = foodCountMap.getOrDefault(restaurantID, 0);
+            System.out.println(restaurantName + " : " + foodCount);
         }
     }
+    
 
 }
+
+

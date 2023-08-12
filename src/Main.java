@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
+ 
     private static final String INPUT_FILE_NAME = "restaurant.txt";
     private static final String INPUT_FILE_NAME_2 = "menu.txt";
 
