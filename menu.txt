@@ -387,3 +387,4 @@
 1,World Famous Chicken,2 pc. Breast and Wing Combo,11.99
 1,World Famous Chicken,3 pc. Chicken Combo,13.19
 1,World Famous Chicken,4 pc. Chicken Combo,14.39
+1,Ala re ala la Carte,Large Popcorn Nuggets,5.99

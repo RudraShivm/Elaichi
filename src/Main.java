@@ -26,14 +26,9 @@ public class Main {
 
 
         while (true) {
-            // System.out.println("INPUT_FILE_NAME");
             String line = br.readLine();
             if (line == null) break;
-            // System.out.println(line);
             String[] array = line.split(",(?! )", 0);
-            //            for (int i = 0; i < array.length; i++) {
-            //                System.out.println(array[i]);
-            //            }
             List < String > Categories = new ArrayList < > ();
             if (array.length > 5) {
                 for (int i = 5; i < array.length; i++) {
@@ -51,7 +46,6 @@ public class Main {
             String line2 = br2.readLine();
             if (line2 == null) break;
             String[] array = line2.split(",(?! )", 0);
-            // System.out.println(array[1]);
             Food FoodEntry = new Food(Integer.parseInt(array[0]), array[1], array[2], Double.parseDouble(array[3]));
             foodList.add(FoodEntry);
 
@@ -61,10 +55,6 @@ public class Main {
 
         RestaurantDatabase RestaurantData = new RestaurantDatabase(restaurantList, foodList);
 
-        // for(Restaurant restaurant:restaurantList){
-        //     System.out.println("da3r");
-        //     restaurant.getDetails();
-        // }
 
         RestaurantData.showMenu();
 
@@ -74,7 +64,6 @@ public class Main {
             j++;
             boolean break_loop = false;
             int menuOption = -1;
-            // System.out.println(" Choose your option : ");
             menuOption = scn.nextInt();
             switch (menuOption) {
                 case 1:
@@ -137,7 +126,6 @@ public class Main {
             }
         }
         scn.close();
-        // System.out.println("ulululuul");
         BufferedWriter bw3 = new BufferedWriter(new FileWriter(INPUT_FILE_NAME));
         BufferedWriter bw2 = new BufferedWriter(new FileWriter(INPUT_FILE_NAME_2));
 
@@ -157,7 +145,6 @@ public class Main {
             bw2.write(foo.getRestaurantID() + "," + foo.getCategory() + "," + foo.getName() + "," + foo.getPrice());
             bw2.write(System.lineSeparator());
         }
-        // bw2.newLine();
         bw2.close();
 
 

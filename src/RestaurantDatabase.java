@@ -262,10 +262,8 @@ public class RestaurantDatabase {
     }
 
     public void searchRestaurantByName(String Name){
-        // System.out.println("sdadw");
         Name=Name.toLowerCase();
         for(Restaurant res: restaurantList){
-            // System.out.println("dde");
             if(res.getName().toLowerCase().equals(Name)){
                 res.getDetails();
                 return;
@@ -308,9 +306,7 @@ public class RestaurantDatabase {
 
     public void searchRestaurantByPrice(String Price){
         int count=0;
-        // System.out.println(restaurantList.size());
         for(Restaurant res: restaurantList){
-            // System.out.println(res.getPrice());
             if(res.getPrice().equals(Price)){
                 res.getDetails();
                 count++;
@@ -479,7 +475,7 @@ public class RestaurantDatabase {
                 if(i==0){
                     System.out.println(" Costliest item(s) in "+RestaurantName+" : ");
                 }
-                foo.getDetails();                 //optimize??
+                foo.getDetails();
                 i++;
             }
         }
