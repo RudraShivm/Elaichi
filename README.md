@@ -35,7 +35,7 @@ Elachi is a food-ordering app developed using JavaFX for my L-1 T-2 academic pro
     <img src="./src/assets/screenshots/userHomePage.jpeg" alt="Game Home" width="250"/>
 
 ---
-## 🛠️ Compile and Test:
+## 🛠️ Compile and Test basic Functionalities:
 1. **Prerequisites**
   - OpenJDK-20
 2. **Setup**
