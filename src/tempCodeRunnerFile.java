@@ -1,3 +1,0 @@
- restaurant:restaurantList){
-           restaurant.getDetails();
-       }
